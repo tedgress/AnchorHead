@@ -13,6 +13,9 @@ import java.util.Properties;
 import javax.swing.*;
 import org.jdom.Document;
 import org.jdom.input.SAXBuilder;
+
+import drama_management.DramaManager;
+import drama_management.IFDramaManager;
 import storyengine.IFStory;
 import storyengine.IFStoryState;
 
@@ -29,6 +32,7 @@ public class GraphicalInterfaceJFrame extends JPanel {
     JTextPane m_inventory = null;
     String m_focus_character = "player";
     static PrintStream m_logger = null;
+    IFDramaManager dm = new DramaManager();
     
     
     Action sendInputText = new AbstractAction() {
@@ -47,7 +51,7 @@ public class GraphicalInterfaceJFrame extends JPanel {
             if (action!=null) {
                 m_actions_to_enqueue.add(action);
             } else {
-                output("Say what?");
+                output( dm.informBadInput(m_input.getText()) );
             }
             m_input.setText("");
         }
@@ -235,6 +239,7 @@ public class GraphicalInterfaceJFrame extends JPanel {
             try {
                 m_story_state.update(m_game, l);
                 m_game.update(m_story_state, l);
+                dm.update(m_story_state, m_game, l);
             } catch (Exception e) {
                 e.printStackTrace();
             }
