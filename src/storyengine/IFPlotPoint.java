@@ -1,8 +1,10 @@
 package storyengine;
 
 import ifgameengine.IFAction;
+import ifgameengine.IFHint;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import org.jdom.Element;
 
@@ -18,6 +20,7 @@ public class IFPlotPoint {
 	IFCondition m_precondition = null; 
 	IFCondition m_trigger = null;
 	LinkedList<IFAction> m_effects = new LinkedList<IFAction>();
+	LinkedList<IFHint> m_hints = new LinkedList<IFHint>();
 	int m_endgame = -1;		// if this is different than -1, the game will end in 'm_endgame' cycles
 		
 	private IFPlotPoint() {
@@ -57,6 +60,21 @@ public class IFPlotPoint {
 				pp.m_endgame = Integer.parseInt(ae.getAttributeValue("delay"));				
 			}			
 		}
+		
+		// hints
+		Element he = root.getChild("hints");
+		if (he != null){
+			for(Object o:he.getChildren("hint")) {
+				Element ae = (Element)o;
+				
+				IFHint hint = IFHint.loadFromXML(ae, path);
+				
+				pp.m_hints.add(hint);
+				
+
+			}
+			
+		}
 				
 		return pp;
 	}	
@@ -79,6 +97,10 @@ public class IFPlotPoint {
 	
 	public int getEndGame() {
 		return m_endgame;
+	}
+	
+	public List<IFHint> getHints() {
+		return m_hints;
 	}
 	
 }
