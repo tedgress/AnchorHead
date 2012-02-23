@@ -5,7 +5,9 @@ import ifgameengine.IFGameState;
 import ifgameengine.Pair;
 
 import java.io.PrintStream;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -46,6 +48,26 @@ public class IFStoryState {
 				System.out.println(pp.m_name + " -> " + m_storyState.get(pp.m_name));
 		}		
 	}
+	
+	public Collection<IFPlotPoint> getRemainingPlotPoints(){
+		
+		HashSet<IFPlotPoint> remaining = new HashSet<IFPlotPoint>();
+		
+		System.out.println("Printing remaining pp");
+		
+		for(IFPlotPoint pp:m_story.getPlotPoints()) {
+			if(m_storyState.get(pp.m_name)==IFPlotPoint.READY){
+				System.out.println(pp.m_name);
+				remaining.add(pp);
+			}
+		}
+		
+		return remaining;
+		
+		
+	}
+	
+	
 		
 	public void update(IFGameState game,List<String> output) throws Exception {
 		// We need this "changes" list, to prevent chained plotpoints being fired in the same cycle:
@@ -60,7 +82,10 @@ public class IFStoryState {
 					
 					changes.add(new Pair<String,Integer>(pp.m_name, IFPlotPoint.FINISHED));
 					
-//					System.out.println("IFStoryState: plotpoint '" + pp.m_name + "' is FINISHED");
+					System.out.println("IFStoryState: plotpoint '" + pp.m_name + "' is FINISHED");
+					
+					this.printActivePlotpoints();
+					this.getRemainingPlotPoints();
 				}
 			}
 		}

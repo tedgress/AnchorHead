@@ -25,6 +25,10 @@
 					text="Here you are!!!"/>
 				
 		</effects>
+		<hints>
+			<hint text="I wonder where a man can get a drink around here...?" subtlety="3"/>
+		
+		</hints>
 	</plotpoint>
 	
 	<plotpoint name="no-more-flasks">
