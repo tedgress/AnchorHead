@@ -26,9 +26,11 @@ public class SimpleNLP {
         action_synonyms.put("examine","examine");
         action_synonyms.put("look","examine");
         action_synonyms.put("explore","examine");
+        action_synonyms.put("read", "examine");
         action_synonyms.put("take","take");
         action_synonyms.put("pick up","take");
         action_synonyms.put("grab","take");
+        action_synonyms.put("get", "take");
         action_synonyms.put("open","open");
         action_synonyms.put("close","close");
         action_synonyms.put("shut","close");
