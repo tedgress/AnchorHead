@@ -1,6 +1,6 @@
 <story>
 	<intromessage>You are inheriting a Grand Mansion that belonged to your distant cousin Edward Verlac!!! You are in an isolated town called Anchorhead and the lawyer who is supposed to help you out is missing. You goto Anchorhead and decide to check out the town before you decide to inherit it. You come to know some dark secrets about the Verlac family. Edward killed his entire family and then commited suicide at the mental asylum. Should you inherit this place??? You start in the living room of the Mansion.</intromessage>
-	
+
 	<plotpoint name="get-flask" plot="william" setsup="give-bum-flask">
 		<preconditions>
 			<condition type="and">
@@ -23,14 +23,13 @@
 				    object="player"
 					object2="reply"
 					text="Here you are!!!"/>
-				
+
 		</effects>
 		<hints>
-			<hint text="I wonder where a man can get a drink around here...?" subtlety="3"/>
-		
+			<hint text="I heard they have special edition flasks at the bar." subtlety="3"/>
 		</hints>
 	</plotpoint>
-	
+
 	<plotpoint name="no-more-flasks">
 		<preconditions>
 			<condition type="and">
@@ -51,14 +50,17 @@
 					object2="reply"
 					text="I'm sorry, I run out of those!!"/>
 		</effects>
-	</plotpoint>	
-	
+	</plotpoint>
+
 	<plotpoint name="find-magic-shop">
 		<trigger>
 			<condition type="location" character="player" location="magic-shop"/>
 		</trigger>
-	</plotpoint>		
-	
+		<hints>
+			<hint text="Have you been to Anchorhead's Magic Shop?  They have some really interesting items in there." subtlety="3"/>
+		</hints>
+	</plotpoint>
+
 	<plotpoint name="get-silver-locket" plot="william" thought="william">
 		<trigger>
 			<condition type="action">
@@ -66,8 +68,8 @@
 						object="silver-locket"/>
 			</condition>
 		</trigger>
-	</plotpoint>	
-	
+	</plotpoint>
+
 	<plotpoint name="get-card" plot="william" setsup="read-library-book">
 		<trigger>
 			<condition type="action">
@@ -75,7 +77,10 @@
 						object="library-card"/>
 			</condition>
 		</trigger>
-	</plotpoint>	
+		<hints>
+			<hint text="Unfortunately, that library-guy is a real stickler about having a library-card." subtlety="3"/>
+		</hints>
+	</plotpoint>
 
 	<plotpoint name="get-safe-combo" plot="evil-god" setsup="open-safe" thought="safe">
 		<trigger>
@@ -84,8 +89,11 @@
 						object="safe-combo"/>
 			</condition>
 		</trigger>
-	</plotpoint>	
-	
+		<hints>
+			<hint text="Some say there is a safe in the mansion, it's too bad Anchorhead doesn't had a locksmith.  Unless they wrote down that combo, we'll never know what's in there." subtlety="3"/>
+		</hints>
+	</plotpoint>
+
 	<plotpoint name="examine-album" thought="family-history">
 		<trigger>
 			<condition type="action">
@@ -93,7 +101,10 @@
 						object="family-album"/>
 			</condition>
 		</trigger>
-	</plotpoint>		
+		<hints>
+			<hint text="The verlac family had a beautiful family album, or so I heard." subtlety="3"/>
+		</hints>
+	</plotpoint>
 
 	<plotpoint name="read-basement-clippings" plot="william" thought="family-history">
 		<trigger>
@@ -102,8 +113,8 @@
 						object="clippings"/>
 			</condition>
 		</trigger>
-	</plotpoint>	
-	
+	</plotpoint>
+
 	<plotpoint name="read-bedroom-pages" plot="william" thought="william">
 		<trigger>
 			<condition type="action">
@@ -111,8 +122,8 @@
 						object="family-pages"/>
 			</condition>
 		</trigger>
-	</plotpoint>			
-	
+	</plotpoint>
+
 	<plotpoint name="open-safe" plot="evil-god" thought="safe" setsup="open-puzzle-box">
 		<preconditions>
 			<condition type="not"><condition type="plotpoint" name="open-safe"/></condition>
@@ -123,8 +134,8 @@
 						object="safe"/>
 			</condition>
 		</trigger>
-	</plotpoint>	
-	
+	</plotpoint>
+
 	<plotpoint name="get-crypt-key" plot="william" thought="crypt">
 		<trigger>
 			<condition type="action">
@@ -132,8 +143,8 @@
 						object="crypt-key"/>
 			</condition>
 		</trigger>
-	</plotpoint>	
-	
+	</plotpoint>
+
 	<plotpoint name="find-williams-coffin" plot="william" thought="william crypt">
 		<preconditions>
 			<condition type="and">
@@ -147,8 +158,11 @@
 						object="crypt"/>
 			</condition>
 		</trigger>
-	</plotpoint>	
-	
+		<hints>
+			<hint text="I recall them building a coffin outside the mansion, but it's odd... I don't know who it was for..." subtlety="3"/>
+		</hints>
+	</plotpoint>
+
 	<plotpoint name="get-skull" plot="william" thought="william crypt" motivated-by="ask-bum-about-crypt ask-bum-about-william">
 		<preconditions>
 			<condition type="plotpoint" name="find-williams-coffin"/>
@@ -159,8 +173,11 @@
 						object="skull"/>
 			</condition>
 		</trigger>
-	</plotpoint>		
-	
+		<hints>
+			<hint text="So you found a crypt.  I bet somebody around here could identify that skull." subtlety="3"/>
+		</hints>
+	</plotpoint>
+
 	<plotpoint name="get-library-book" plot="william" thought="family-history">
 		<preconditions>
 			<condition type="and">
@@ -182,10 +199,13 @@
 			<action type="talk" actor="library-guy"
 				    object="player"
 					object2="reply"
-					text="Here you have, the book you had reserved."/>				
+					text="Here you have, the book you had reserved."/>
 		</effects>
-	</plotpoint>	
-	
+		<hints>
+			<hint text="The library has some great local history books.  It's totatlly lacking in steampunk novels though..." subtlety="3"/>
+		</hints>
+	</plotpoint>
+
 	<plotpoint name="open-puzzle-box" plot="evil-god" setsup="see-evil-god">
 		<preconditions>
 			<condition type="and">
@@ -211,15 +231,18 @@
 			<action type="talk" actor="magic-shop-owner"
 				    object="player"
 					object2="reply"
-					text="There you go! It was a simple logic puzzle!"/>				
+					text="There you go! It was a simple logic puzzle!"/>
 		</effects>
-	</plotpoint>	
-	
+		<hints>
+			<hint text="I've been working on this rubik's cube for days.  The magic-shop owner can solve these things in 18.2 seconds!" subtlety="3"/>
+		</hints>
+	</plotpoint>
+
 	<plotpoint name="buy-magic-ball">
 		<preconditions>
 			<condition type="and">
 				<condition type="location" character="player" location="magic-shop"/>
-				<condition type="not"><condition type="plotpoint" name="buy-magic-ball"/></condition>				
+				<condition type="not"><condition type="plotpoint" name="buy-magic-ball"/></condition>
 			</condition>
 		</preconditions>
 		<trigger>
@@ -236,10 +259,10 @@
 			<action type="talk" actor="magic-shop-owner"
 				    object="player"
 					object2="reply"
-					text="Here you are!!!"/>				
+					text="Here you are!!!"/>
 		</effects>
-	</plotpoint>			
-	
+	</plotpoint>
+
 	<plotpoint name="no-more-magic-ball">
 		<preconditions>
 			<condition type="and">
@@ -258,15 +281,15 @@
 			<action type="talk" actor="magicshop-owner"
 				    object="player"
 					object2="reply"
-					text="Come on! You Already bough one!"/>				
+					text="Come on! You Already bough one!"/>
 		</effects>
-	</plotpoint>	
-	
+	</plotpoint>
+
 	<plotpoint name="get-amulet">
 		<preconditions>
 			<condition type="and">
 				<condition type="location" character="player" location="magic-shop"/>
-				<condition type="not"><condition type="plotpoint" name="get-amulet"/></condition>				
+				<condition type="not"><condition type="plotpoint" name="get-amulet"/></condition>
 			</condition>
 		</preconditions>
 		<trigger>
@@ -283,10 +306,13 @@
 			<action type="talk" actor="magic-shop-owner"
 				    object="player"
 					object2="reply"
-					text="Here you are!!!"/>				
+					text="Here you are!!!"/>
 		</effects>
-	</plotpoint>			
-	
+		<hints>
+			<hint text="I've seen magic amulets at the shop...  It'll protect you from anything, it advertises, even zombies!" subtlety="3"/>
+		</hints>
+	</plotpoint>
+
 	<plotpoint name="no-more-amulets">
 		<preconditions>
 			<condition type="and">
@@ -305,12 +331,12 @@
 			<action type="talk" actor="magic-shop-owner"
 				    object="player"
 					object2="reply"
-					text="Come on! You Already bough one!"/>				
+					text="Come on! You Already bough one!"/>
 		</effects>
-	</plotpoint>	
-	
+	</plotpoint>
+
 	<plotpoint name="see-evil-god-denied" plot="evil-god"/>
-	
+
 	<plotpoint name="see-evil-god" plot="evil-god">
 		<preconditions>
 			<condition type="not"><condition type="plotpoint" name="see-evil-god-denied"/></condition>
@@ -326,11 +352,14 @@
 			<action type="talk" actor="player"
 				    object="telescope"
 					object2="reply"
-					text="Oh no! An evil god is approaching the earth! We will all die!!"/>	
-			<endgame delay="100"/>			
+					text="Oh no! An evil god is approaching the earth! We will all die!!"/>
+			<endgame delay="100"/>
 		</effects>
-	</plotpoint>	
-	
+		<hints>
+			<hint text="We have a famous observatory in Anchorhead, but I think the telescope is missing something." subtlety="3"/>
+		</hints>
+	</plotpoint>
+
 	<plotpoint name="dont-see-evil-god" plot="evil-god">
 		<preconditions>
 			<condition type="plotpoint" name="see-evil-god-denied"/>
@@ -346,11 +375,11 @@
 			<action type="talk" actor="player"
 				    object="telescope"
 					object2="reply"
-					text="Telescope is damaged."/>	
+					text="Telescope is damaged."/>
 		</effects>
-	</plotpoint>		
-	
-	<plotpoint name="start-talking-to-bum" plot="william" though="bum" setsup="give-bum-flask">
+	</plotpoint>
+
+	<plotpoint name="start-talking-to-bum" plot="william" thought="bum" setsup="give-bum-flask">
 		<preconditions>
 				<condition type="not"><condition type="plotpoint" name="start-talking-to-bum"/></condition>
 		</preconditions>
@@ -368,7 +397,7 @@
 					text="What do you want from me, stranger?"/>
 		</effects>
 	</plotpoint>
-	
+
 	<plotpoint name="hello-to-bum-afterwards">
 		<preconditions>
 			<condition type="plotpoint" name="start-talking-to-bum"/>
@@ -386,9 +415,12 @@
 					object2="reply"
 					text="Would you spare a coin?"/>
 		</effects>
-	</plotpoint>	
-	
-	<plotpoint name="reject-flask-from-player" plot="william" though="bum">
+		<hints>
+			<hint text="The bum will talk your ear off, he's been in Anchorhead a while." subtlety="3"/>
+		</hints>
+	</plotpoint>
+
+	<plotpoint name="reject-flask-from-player" plot="william" thought="bum">
 		<preconditions>
 				<condition type="not"><condition type="plotpoint" name="start-talking-to-bum"/></condition>
 		</preconditions>
@@ -409,8 +441,8 @@
 					text="Not from strangers, thanks."/>
 		</effects>
 	</plotpoint>
-	
-	<plotpoint name="reject-amulet-from-player" plot="william" though="bum">
+
+	<plotpoint name="reject-amulet-from-player" plot="william" thought="bum">
 		<preconditions>
 				<condition type="not"><condition type="plotpoint" name="start-talking-to-bum"/></condition>
 		</preconditions>
@@ -431,8 +463,8 @@
 					object2="amulet"/>
 		</effects>
 	</plotpoint>
-	
-	<plotpoint name="give-bum-flask" plot="william" though="bum">
+
+	<plotpoint name="give-bum-flask" plot="william" thought="bum">
 		<preconditions>
 				<condition type="plotpoint" name="start-talking-to-bum"/>
 		</preconditions>
@@ -449,9 +481,12 @@
 					object2="reply"
 					text="Thanks my friend, now I trust you."/>
 		</effects>
+		<hints>
+			<hint text="The bum will talk your ear off, especially when he's drunk..." subtlety="3"/>
+		</hints>
 	</plotpoint>
-	
-	<plotpoint name="ask-bum-about-anna" plot="william" though="bum">
+
+	<plotpoint name="ask-bum-about-anna" plot="william" thought="bum">
 		<preconditions>
 			<condition type="plotpoint" name="start-talking-to-bum"/>
 		</preconditions>
@@ -472,9 +507,9 @@
 					object2="reply"
 					text="She left me a few years ago. All thanks to my drinking habit!"/>
 		</effects>
-	</plotpoint>	
-	
-	<plotpoint name="ask-bum-about-himself" plot="william" though="bum">
+	</plotpoint>
+
+	<plotpoint name="ask-bum-about-himself" plot="william" thought="bum">
 		<preconditions>
 			<condition type="plotpoint" name="start-talking-to-bum"/>
 		</preconditions>
@@ -511,9 +546,12 @@
 					object2="reply"
 					text="Find me something so that I can protect myself."/>
 		</effects>
-	</plotpoint>		
-	
-	<plotpoint name="ask-bum-about-william" plot="william" though="bum">
+		<hints>
+			<hint text="If your bored, ask the bum about himself, he's seen dinosaurs!" subtlety="3"/>
+		</hints>
+	</plotpoint>
+
+	<plotpoint name="ask-bum-about-william" plot="william" thought="bum">
 		<preconditions>
 			<condition type="plotpoint" name="start-talking-to-bum"/>
 		</preconditions>
@@ -539,8 +577,8 @@
 					text="He now rests on his crypt."/>
 		</effects>
 	</plotpoint>
-	
-	<plotpoint name="ask-bum-about-crypt" plot="william" though="bum crypt" motivatedby="find-williams-coffin" setsup="find-williams-coffin">
+
+	<plotpoint name="ask-bum-about-crypt" plot="william" thought="bum crypt" motivatedby="find-williams-coffin" setsup="find-williams-coffin">
 		<preconditions>
 			<condition type="plotpoint" name="start-talking-to-bum"/>
 		</preconditions>
@@ -561,9 +599,9 @@
 					object2="reply"
 					text="You'll need to first find a crypt key yourself."/>
 		</effects>
-	</plotpoint>	
-	
-	<plotpoint name="ask-bum-about-secrets" plot="william" though="bum crypt" motivatedby="find-williams-coffin" setsup="find-williams-coffin">
+	</plotpoint>
+
+	<plotpoint name="ask-bum-about-secrets" plot="william" thought="bum crypt" motivatedby="find-williams-coffin" setsup="find-williams-coffin">
 		<preconditions>
 			<condition type="plotpoint" name="start-talking-to-bum"/>
 		</preconditions>
@@ -584,9 +622,9 @@
 					object2="reply"
 					text="May be you are not worthy of knowing..."/>
 		</effects>
-	</plotpoint>	
-	
-	<plotpoint name="show-bum-skull" plot="william" though="bum william">
+	</plotpoint>
+
+	<plotpoint name="show-bum-skull" plot="william" thought="bum william">
 		<trigger>
 			<condition type="action">
 				<action type="give" actor="player"
@@ -607,9 +645,12 @@
 					object2="reply"
 					text="We might be cursed! I need protection!"/>
 		</effects>
-	</plotpoint>	
-	
-	<plotpoint name="give-bum-amulet" plot="william" though="bum william" setsup="discover-book-in-sewer">
+		<hints>
+			<hint text="Only the bum has been in the town long enough to know it's history.  He knows everybody so well, he could help the police identify bodies!" subtlety="3"/>
+		</hints>
+	</plotpoint>
+
+	<plotpoint name="give-bum-amulet" plot="william" thought="bum william" setsup="discover-book-in-sewer">
 		<preconditions>
 			<condition type="plotpoint" name="start-talking-to-bum"/>
 			<condition type="plotpoint" name="show-bum-skull"/>
@@ -635,10 +676,10 @@
 					object2="reply"
 					text="Look for it carefully!."/>
 		</effects>
-	</plotpoint>	
+	</plotpoint>
 
 	<plotpoint name="discover-book-in-sewer-denied" plot="william"/>
-	
+
 	<plotpoint name="discover-book-in-sewer" plot="william" >
 		<preconditions>
 			<condition type="and">
@@ -661,10 +702,10 @@
 				    object="street"
 					object2="reply"
 					text="This book explains everything!"/>
-			<endgame delay="100"/>	
+			<endgame delay="100"/>
 		</effects>
-	</plotpoint>	
-	
+	</plotpoint>
+
 	<plotpoint name="dont-discover-book-in-sewer" plot="william" >
 		<preconditions>
 			<condition type="and">
@@ -683,6 +724,6 @@
 					object2="reply"
 					text="No light is entering in the sewer, I cannot see anything!"/>
 		</effects>
-	</plotpoint>	
-	
+	</plotpoint>
+
 </story>
