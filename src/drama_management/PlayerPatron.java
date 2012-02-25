@@ -22,6 +22,7 @@ public class PlayerPatron {
 	 */
 	public boolean hintPlayer(AbstractHint hint, IFStoryState story_state, IFGameState game_state, List<String> logOutput){
 		
+		//TED: (from Josh) I will support the toString method as a way of getting the hint text
 		this.talkToSelf(hint.toString(), story_state, game_state);
 		
 		return true;
