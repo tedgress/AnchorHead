@@ -4,6 +4,7 @@ import ifgameengine.AbstractHint;
 import ifgameengine.IFGameState;
 import java.util.List;
 
+import storyengine.IFPlotPoint;
 import storyengine.IFStoryState;
 
 public class DramaManager implements IFDramaManager {
@@ -18,7 +19,7 @@ public class DramaManager implements IFDramaManager {
 			List<String> logOutput) {
 
 		//Is the player frustrated?
-		if ( this.model.isPlayerFrustrated(story, game, logOutput)){
+		if ( this.model.isPlayerFrustrated(story, game, logOutput, this.hint_repo)){
 			//Let's help him out, grab a hint
 			AbstractHint hint = this.hint_repo.getHint(story, game, logOutput);
 			
@@ -27,7 +28,7 @@ public class DramaManager implements IFDramaManager {
 				boolean hintAccepted = this.patron.hintPlayer(hint, story, game, logOutput);
 				
 				//Update the hint status
-				this.hint_repo.updateHint(hint, hintAccepted);
+				this.hint_repo.updateHint(hint, hintAccepted, game);
 				
 			}
 		}
@@ -38,12 +39,20 @@ public class DramaManager implements IFDramaManager {
 	
 
 	@Override
-	public String informBadInput(String unrecognized) {
+	public String informBadInput(String unrecognized, IFGameState game_state) {
 		
 		//Decide what to do an return a response.
 		//NOTE: This will occur in the GUI thread...
-		return this.model.addBadUserInput(unrecognized);
+		return this.model.addBadUserInput(unrecognized, game_state);
 		
 	
+	}
+
+
+	@Override
+	public void informPlotPointComplete(IFPlotPoint pp, IFGameState game_state) {
+		
+		this.model.markEvent(game_state.getCycle(), game_state.getNumberPlayerMoves());
+		
 	}
 }
