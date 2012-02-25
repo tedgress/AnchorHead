@@ -103,4 +103,10 @@ public class IFPlotPoint {
 		return m_hints;
 	}
 	
+	public boolean hasHints(){
+		if (!this.getHints().isEmpty())
+			return true;
+		return false;
+	}
+	
 }
