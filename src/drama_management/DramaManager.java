@@ -4,13 +4,16 @@ import ifgameengine.AbstractHint;
 import ifgameengine.IFGameState;
 import java.util.List;
 
+import drama_management_cheat.CheatHinter;
+import drama_management_cheat.CheatPlayerModel;
+
 import storyengine.IFPlotPoint;
 import storyengine.IFStoryState;
 
 public class DramaManager implements IFDramaManager {
 	
-	protected PlayerModel model = new PlayerModel();
-	protected HintRepository hint_repo = new HintRepository();
+	protected AbstractPlayerModel model = new PlayerModel();
+	protected AbstractHintMachine hint_repo = new HintRepository();
 	protected PlayerPatron patron = new PlayerPatron();
 	
 
@@ -53,6 +56,15 @@ public class DramaManager implements IFDramaManager {
 	public void informPlotPointComplete(IFPlotPoint pp, IFGameState game_state) {
 		
 		this.model.markEvent(game_state.getCycle(), game_state.getNumberPlayerMoves());
+		
+	}
+
+
+	@Override
+	public void cheat() {
+		// TODO Auto-generated method stub
+		this.hint_repo = new CheatHinter();
+		this.model = new CheatPlayerModel();
 		
 	}
 }

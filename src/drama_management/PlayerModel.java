@@ -12,7 +12,7 @@ import ifgameengine.IFGameState;
 import ifgameengine.Pair;
 import storyengine.IFStoryState;
 
-public class PlayerModel {
+public class PlayerModel implements AbstractPlayerModel{
 	
 	List<String> failedInput = new LinkedList<String>();
 	String failedInputResponse = "Say what?";
@@ -25,7 +25,7 @@ public class PlayerModel {
 	
 	
 	
-	public boolean isPlayerFrustrated(IFStoryState story_state, IFGameState game_state, List<String> logOutput, HintRepository hint_repo){
+	public boolean isPlayerFrustrated(IFStoryState story_state, IFGameState game_state, List<String> logOutput, AbstractHintMachine hint_repo){
 		
 		int FRUSTRATION_LIMIT = 20;
 		
@@ -54,7 +54,7 @@ public class PlayerModel {
 	//1.  Unrecognized input, u, calculated by f(u)
 	//2.  Repeated commands, r, calculated by g(r)
 	//3.  Moves since last plotpoint, m_p, calculated by h(m_p)
-	protected int totalFrustration(IFGameState game_state, HintRepository hint_repo){
+	protected int totalFrustration(IFGameState game_state, AbstractHintMachine hint_repo){
 		int k_f = 10;
 		
 		int triFactors = this.calculate_f_u(game_state) + (k_f * this.calculate_g_r(game_state)) + this.calculate_m_p(game_state);

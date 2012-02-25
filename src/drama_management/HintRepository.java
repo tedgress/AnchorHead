@@ -12,7 +12,7 @@ import ifgameengine.AbstractHint;
 import ifgameengine.IFGameState;
 import ifgameengine.IFHint;
 
-public class HintRepository {
+public class HintRepository implements AbstractHintMachine{
 	
 	protected HashSet<IFHint> hinted = new HashSet<IFHint>();
 	protected Stack<Integer> cycleHinted = new Stack<Integer>();

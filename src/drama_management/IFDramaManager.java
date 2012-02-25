@@ -8,6 +8,7 @@ import storyengine.IFStoryState;
 
 public interface IFDramaManager {
 	
+	
 	/**
 	 * Update the Drama Manager.
 	 * 
@@ -27,5 +28,7 @@ public interface IFDramaManager {
 	public String informBadInput(String unrecognized, IFGameState game_state);
 	
 	public void informPlotPointComplete(IFPlotPoint pp, IFGameState game_state);
+	
+	public void cheat();
 
 }

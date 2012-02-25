@@ -57,13 +57,21 @@ public class GraphicalInterfaceJFrame extends JPanel {
         }
     };
 
-    public static void main(String s[]) throws IOException 
+    public static void main(String args[]) throws IOException 
     {
+
+    	
+    		
         String loggerName = "IF-log-" + new Date().getTime() + ".txt";
         m_logger = new PrintStream(new FileOutputStream(new File(loggerName)));
 
         String gameToLoad = "games/anchorhead";
         GraphicalInterfaceJFrame game = new GraphicalInterfaceJFrame();
+        
+        if (args.length > 0) {
+    		if ( args[0].equals("-cheat"))
+    			game.cheat();
+    	}
 
         game.loadGame(gameToLoad);
         game.setPreferredSize(new Dimension(640, 512));
@@ -223,6 +231,10 @@ public class GraphicalInterfaceJFrame extends JPanel {
             output(s);
         }
         m_story.computeUserImportantActions(m_game);
+    }
+    
+    public void cheat() {
+    	this.dm.cheat();
     }
 
     public void update() {
