@@ -249,6 +249,15 @@ public class IFGameState {
 		}
 		return null;		
 	}
+	
+	/**
+	 * Returns the number of moves made by the player
+	 * 
+	 * @return the number of moves made by the player
+	 */
+	public int getNumberPlayerMoves(){
+		return this.m_userTrace.size();
+	}
 
 	public void saveToXML(PrintStream out, int i) {
 
