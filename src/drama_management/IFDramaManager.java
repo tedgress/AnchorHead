@@ -3,6 +3,7 @@ package drama_management;
 import java.util.List;
 
 import ifgameengine.IFGameState;
+import storyengine.IFPlotPoint;
 import storyengine.IFStoryState;
 
 public interface IFDramaManager {
@@ -20,8 +21,11 @@ public interface IFDramaManager {
 	 * Inform the DM that the user's input was not recognized
 	 * 
 	 * @param unrecognized The user's unrecognized command
+	 * @param current game state
 	 * @return Return the string that should be displayed to the user
 	 */
-	public String informBadInput(String unrecognized);
+	public String informBadInput(String unrecognized, IFGameState game_state);
+	
+	public void informPlotPointComplete(IFPlotPoint pp, IFGameState game_state);
 
 }
