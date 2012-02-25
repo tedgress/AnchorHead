@@ -2,13 +2,13 @@ package ifgameengine;
 
 import org.jdom.Element;
 
-public class IFHint {
+public class IFHint implements AbstractHint{
 	
 	String text = null;
 	int subteltyRanking = 0;
 	boolean hintGiven = false;
 	
-	IFHint(String hint_text, int ranking){
+	public IFHint(String hint_text, int ranking){
 		this.text = hint_text;
 		this.subteltyRanking = ranking;
 	}
