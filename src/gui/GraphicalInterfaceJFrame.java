@@ -51,7 +51,7 @@ public class GraphicalInterfaceJFrame extends JPanel {
             if (action!=null) {
                 m_actions_to_enqueue.add(action);
             } else {
-                output( dm.informBadInput(m_input.getText()) );
+                output( dm.informBadInput(m_input.getText(), m_game) );
             }
             m_input.setText("");
         }
@@ -237,7 +237,7 @@ public class GraphicalInterfaceJFrame extends JPanel {
         if (m_story_state != null && m_game != null) {
             LinkedList<String> l = new LinkedList<String>();
             try {
-                m_story_state.update(m_game, l);
+                m_story_state.update(m_game, dm, l);
                 m_game.update(m_story_state, l);
                 dm.update(m_story_state, m_game, l);
             } catch (Exception e) {
