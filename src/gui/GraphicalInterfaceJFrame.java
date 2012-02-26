@@ -51,19 +51,27 @@ public class GraphicalInterfaceJFrame extends JPanel {
             if (action!=null) {
                 m_actions_to_enqueue.add(action);
             } else {
-                output( dm.informBadInput(m_input.getText()) );
+                output( dm.informBadInput(m_input.getText(), m_game) );
             }
             m_input.setText("");
         }
     };
 
-    public static void main(String s[]) throws IOException 
+    public static void main(String args[]) throws IOException 
     {
+
+    	
+    		
         String loggerName = "IF-log-" + new Date().getTime() + ".txt";
         m_logger = new PrintStream(new FileOutputStream(new File(loggerName)));
 
         String gameToLoad = "games/anchorhead";
         GraphicalInterfaceJFrame game = new GraphicalInterfaceJFrame();
+        
+        if (args.length > 0) {
+    		if ( args[0].equals("-cheat"))
+    			game.cheat();
+    	}
 
         game.loadGame(gameToLoad);
         game.setPreferredSize(new Dimension(640, 512));
@@ -224,6 +232,10 @@ public class GraphicalInterfaceJFrame extends JPanel {
         }
         m_story.computeUserImportantActions(m_game);
     }
+    
+    public void cheat() {
+    	this.dm.cheat();
+    }
 
     public void update() {
 
@@ -237,7 +249,7 @@ public class GraphicalInterfaceJFrame extends JPanel {
         if (m_story_state != null && m_game != null) {
             LinkedList<String> l = new LinkedList<String>();
             try {
-                m_story_state.update(m_game, l);
+                m_story_state.update(m_game, dm, l);
                 m_game.update(m_story_state, l);
                 dm.update(m_story_state, m_game, l);
             } catch (Exception e) {

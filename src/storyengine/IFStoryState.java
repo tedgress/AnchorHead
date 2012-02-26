@@ -14,6 +14,8 @@ import java.util.Map;
 
 import org.jdom.Element;
 
+import drama_management.IFDramaManager;
+
 public class IFStoryState {
 	IFStory m_story = null;
 	
@@ -69,7 +71,7 @@ public class IFStoryState {
 	
 	
 		
-	public void update(IFGameState game,List<String> output) throws Exception {
+	public void update(IFGameState game,IFDramaManager dm, List<String> output) throws Exception {
 		// We need this "changes" list, to prevent chained plotpoints being fired in the same cycle:
 		LinkedList<Pair<String,Integer>> changes = new LinkedList<Pair<String,Integer>>();
 		
@@ -84,8 +86,12 @@ public class IFStoryState {
 					
 					System.out.println("IFStoryState: plotpoint '" + pp.m_name + "' is FINISHED");
 					
-					this.printActivePlotpoints();
+					//this.printActivePlotpoints();
+					System.out.println("Number moves: " + game.getNumberPlayerMoves());
 					this.getRemainingPlotPoints();
+					
+					dm.informPlotPointComplete(pp, game);
+					
 				}
 			}
 		}
