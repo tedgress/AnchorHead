@@ -545,6 +545,27 @@ However, this game only understands very basic commands like "take","look","go t
 				</animations>
 				<ai>bartender.xml</ai>
 			</object>
+			
+			<object type="character" id="crazy-drunk" x="412" y="416">
+				<description>A toothless old drunk.</description>
+				<inventory>
+				</inventory>
+				<action>
+					<type>idle</type>
+				</action>
+				<animations>
+					<animation action="idle">
+						<frame time="100">bum</frame>
+					</animation>
+					<animation action="talk">
+						<frame time="5">bum-talk</frame>
+						<frame time="5">bum</frame>
+					</animation>
+				</animations>
+				<ai>bum.xml</ai>
+			</object>
+			
+			
 		</objects>
 	</room>
 
