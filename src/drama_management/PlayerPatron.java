@@ -23,8 +23,8 @@ public class PlayerPatron {
 	public boolean hintPlayer(AbstractHint hint, IFStoryState story_state, IFGameState game_state, List<String> logOutput){
 		
 		//TED: (from Josh) I will support the toString method as a way of getting the hint text
-		this.talkToSelf(hint.toString(), story_state, game_state);
-		
+		//this.talkToSelf(hint.toString(), story_state, game_state);
+		this.talkToDrunk(hint.toString(), story_state, game_state);
 		return true;
 	}
 	
@@ -38,6 +38,21 @@ public class PlayerPatron {
 			IFGameState game_state) {
 
 		game_state.enqueueAction(new IFAction("player", "talk", "player",
+				"reply", message), story_state);
+
+	}
+	
+	
+	/**
+	 * Display a message, that the "crazy drunk" character is talking to the player
+	 * @param message The message to be displayed to the user
+	 * @param story_state The current story state
+	 * @param game_state The current game state
+	 */
+	protected void talkToDrunk(String message, IFStoryState story_state,
+			IFGameState game_state) {
+
+		game_state.enqueueAction(new IFAction("crazy-drunk", "talk", "player",
 				"reply", message), story_state);
 
 	}
