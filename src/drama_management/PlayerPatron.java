@@ -26,6 +26,7 @@ public class PlayerPatron {
 		//this.talkToSelf(hint.toString(), story_state, game_state);
 		this.talkToDrunk(hint.toString(), story_state, game_state);
 		return true;
+		
 	}
 	
 	/**
@@ -52,8 +53,29 @@ public class PlayerPatron {
 	protected void talkToDrunk(String message, IFStoryState story_state,
 			IFGameState game_state) {
 
-		game_state.enqueueAction(new IFAction("crazy-drunk", "talk", "player",
+		
+		//talker, talk command, talk-receiver, reply, message
+		game_state.enqueueAction(new IFAction("player", "talk", "crazy-drunk",
 				"reply", message), story_state);
 
 	}
+	
+	
+
+	/**
+	 * Display a message, that the "crazy drunk" character is talking to the player
+	 * @param message The message to be displayed to the user
+	 * @param story_state The current story state
+	 * @param game_state The current game state
+	 */
+	protected void drunkTalksToBartender(String message, IFStoryState story_state,
+			IFGameState game_state) {
+
+		
+		//talker, talk command, talk-receiver, reply, message
+		game_state.enqueueAction(new IFAction("crazy-drunk", "talk", "bartender",
+				"reply", message), story_state);
+
+	}
+
 }
