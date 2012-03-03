@@ -16,7 +16,7 @@ public class HintRepository implements AbstractHintMachine{
 	
 	protected HashSet<IFHint> hinted = new HashSet<IFHint>();
 	protected Stack<Integer> cycleHinted = new Stack<Integer>();
-	private static final int MIN_TIME_BETWEEN_HINTS = 2400;
+	private int MIN_TIME_BETWEEN_HINTS = 2400;
 	
 	protected int getCycleLastHintAccepted() {
 		if (!this.cycleHinted.isEmpty()){
@@ -56,9 +56,9 @@ public class HintRepository implements AbstractHintMachine{
 	}
 	
 	public boolean hintedRecently(IFGameState game_state){
-		if (game_state.getCycle() < HintRepository.MIN_TIME_BETWEEN_HINTS && this.getNumTimesHinted() == 0)
+		if (game_state.getCycle() < this.get_time_between_hints() && this.getNumTimesHinted() == 0)
 			return false;
-		else if ((game_state.getCycle() - this.getCycleLastHintAccepted() < HintRepository.MIN_TIME_BETWEEN_HINTS))
+		else if ((game_state.getCycle() - this.getCycleLastHintAccepted() < this.get_time_between_hints()))
 			return true;
 		else
 			return false;
@@ -86,6 +86,14 @@ public class HintRepository implements AbstractHintMachine{
 		}
 		
 		return remaining;
+	}
+
+	public int get_time_between_hints() {
+		return MIN_TIME_BETWEEN_HINTS;
+	}
+
+	public void set_time_between_hints(int mIN_TIME_BETWEEN_HINTS) {
+		MIN_TIME_BETWEEN_HINTS = mIN_TIME_BETWEEN_HINTS;
 	}
 
 }

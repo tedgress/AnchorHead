@@ -16,5 +16,9 @@ public interface AbstractHintMachine {
 	public boolean hintedRecently(IFGameState game_state);
 	
 	public void updateHint(AbstractHint recentHint, boolean hintAccepted, IFGameState game_state);
+	
+	public int get_time_between_hints();
+
+	public void set_time_between_hints(int mIN_TIME_BETWEEN_HINTS);
 
 }

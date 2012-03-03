@@ -34,7 +34,7 @@ public class PlayerModel implements AbstractPlayerModel {
 		try {
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
 			java.util.Date date = new java.util.Date();
-			
+
 			String timestamp = df.format(date);
 
 			logFile = new FileHandler("log" + timestamp + ".txt");
@@ -58,8 +58,8 @@ public class PlayerModel implements AbstractPlayerModel {
 
 
 		// Log frustration levels
-		log.finest(game_state.getCycle() + " " 
-		        + this.calculate_f_c(game_state) + " " 
+		log.finest(game_state.getCycle() + " "
+		        + this.calculate_f_c(game_state) + " "
 				+ this.calculate_r_n(game_state) + " "
 				+ this.calculate_m_p(game_state) + " "
 				+ this.totalFrustration(game_state, hint_repo) + " "
@@ -67,13 +67,10 @@ public class PlayerModel implements AbstractPlayerModel {
 
 		if (this.totalFrustration(game_state, hint_repo) >= PlayerModel.FRUSTRATION_LIMIT
 				&& this.totalFrustration(game_state, hint_repo) != 0) {
-			
+
 			return true;
 		}
 
-		// if (game_state.getCycle() % (PlayerModel.ONE_MINUTE_IN_CYCLES / 2) ==
-		// 0 )
-		// return true;
 
 		return false;
 	}
@@ -116,7 +113,7 @@ public class PlayerModel implements AbstractPlayerModel {
 	/**
 	 * Calculates the frustration factor measured, m(p), moves since last plot
 	 * point
-	 * 
+	 *
 	 * @param game_state
 	 * @return An integer value; the number of moves since last plot point
 	 */
@@ -133,7 +130,7 @@ public class PlayerModel implements AbstractPlayerModel {
 	/**
 	 * Calculates f(c), the number of failed input attempts since the last
 	 * accepted command
-	 * 
+	 *
 	 * @param game_state
 	 * @return the number of failed input attempts since the last successfully
 	 *         inputed command.
@@ -145,7 +142,7 @@ public class PlayerModel implements AbstractPlayerModel {
 
 	/**
 	 * Calculates the number of similar repeated commands
-	 * 
+	 *
 	 * @param game_state
 	 * @return The number of repeated commands of the same type
 	 */

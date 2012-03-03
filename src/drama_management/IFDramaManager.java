@@ -29,6 +29,6 @@ public interface IFDramaManager {
 	
 	public void informPlotPointComplete(IFPlotPoint pp, IFGameState game_state);
 	
-	public void cheat();
+	public void cheat(boolean realHints);
 
 }

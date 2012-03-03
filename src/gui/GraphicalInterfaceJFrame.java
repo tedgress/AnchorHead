@@ -74,11 +74,14 @@ public class GraphicalInterfaceJFrame extends JPanel {
         String gameToLoad = "games/anchorhead";
         GraphicalInterfaceJFrame game = new GraphicalInterfaceJFrame();
         
-        
         if (args.length > 0) {
     		if ( args[0].equals("-cheat"))
-    			game.cheat();
+    			game.cheat(false);
     	}
+        
+        if (args.length >= 2 && args[1].equals("-use_real_hints")){
+        	game.cheat(true);
+        }
 
         game.loadGame(gameToLoad);
         game.setPreferredSize(new Dimension(640, 512));
@@ -240,8 +243,9 @@ public class GraphicalInterfaceJFrame extends JPanel {
         m_story.computeUserImportantActions(m_game);
     }
     
-    public void cheat() {
-    	this.dm.cheat();
+    public void cheat(boolean realHints) {
+    	
+    	this.dm.cheat(realHints);
     }
 
     public void update() {
