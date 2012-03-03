@@ -1,7 +1,7 @@
 package drama_management;
 
-import java.io.IOException;
-import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -30,12 +30,14 @@ public class PlayerModel implements AbstractPlayerModel {
 	private static FileHandler logFile;
 
 	public PlayerModel() {
-		log.setLevel(Level.INFO);
+		log.setLevel(Level.FINEST);
 		try {
+			DateFormat df = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
 			java.util.Date date = new java.util.Date();
-			Timestamp timestamp = new Timestamp(date.getTime());
+			
+			String timestamp = df.format(date);
 
-			logFile = new FileHandler("log" + timestamp.toString() + ".txt");
+			logFile = new FileHandler("log" + timestamp + ".txt");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -53,12 +55,10 @@ public class PlayerModel implements AbstractPlayerModel {
 			this.failedInput.clear();
 			this.lastMoveNumber = game_state.getNumberPlayerMoves();
 		}
-		System.out.println("f(c) = " + this.calculate_f_c(game_state)
-				+ " r(n) = " + this.calculate_r_n(game_state) + " m(p) = "
-				+ this.calculate_m_p(game_state));
+
 
 		// Log frustration levels
-		log.info(game_state.getCycle() + " " 
+		log.finest(game_state.getCycle() + " " 
 		        + this.calculate_f_c(game_state) + " " 
 				+ this.calculate_r_n(game_state) + " "
 				+ this.calculate_m_p(game_state) + " "
@@ -67,7 +67,7 @@ public class PlayerModel implements AbstractPlayerModel {
 
 		if (this.totalFrustration(game_state, hint_repo) >= PlayerModel.FRUSTRATION_LIMIT
 				&& this.totalFrustration(game_state, hint_repo) != 0) {
-			System.out.println(this.totalFrustration(game_state, hint_repo));
+			
 			return true;
 		}
 
@@ -85,7 +85,7 @@ public class PlayerModel implements AbstractPlayerModel {
 	protected int totalFrustration(IFGameState game_state,
 			AbstractHintMachine hint_repo) {
 		int k_r = 10; // Factor for repeated commands
-		int k_c = 1; // Factor for unrecognized commands
+		int k_c = 3; // Factor for unrecognized commands
 		int k_m = 1; // Factor for moves since last plot point
 
 		int triFactors = (k_c * this.calculate_f_c(game_state))
@@ -99,8 +99,10 @@ public class PlayerModel implements AbstractPlayerModel {
 
 		this.failedInput.add(input);
 
-		if (game_state.getNumberPlayerMoves() < 10)
-			return "Sorry, I don't understand what you want to do.  Try really simple commands like talk, look, move, etc...";
+		if (game_state.getNumberPlayerMoves() < 3)
+			return "Sorry, I don't understand what you want to do.  Try really simple commands like take, look, move, etc...";
+		else if (this.failedInput.size() >= 2)
+			return "Maybe I should have read the leaflet in the mansion...";
 
 		return failedInputResponse;
 	}
@@ -155,7 +157,7 @@ public class PlayerModel implements AbstractPlayerModel {
 						game_state.getUserActionTrace().getActions().size());
 
 		int MAX_REPEATED_COMMANDS = 2;
-		int COEFECCIENT_OF_REPEATED_ACTIONS = 10;
+
 		boolean limit_reached = false;
 
 		if (actionI.hasPrevious()) {
@@ -178,7 +180,7 @@ public class PlayerModel implements AbstractPlayerModel {
 		}
 
 		if (limit_reached)
-			return COEFECCIENT_OF_REPEATED_ACTIONS;
+			return MAX_REPEATED_COMMANDS;
 		else
 			return 0;
 	}
