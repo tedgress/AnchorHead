@@ -201,7 +201,7 @@
 			</object>
 			<object type="item" id="leaflet" x="320" y="417" synonym="leaf">
 				<description>Welcome to Anchorhead! This is a game of mystery and adventure, no computer should be without one!
-However, I only undertand basic commands like: go to, look, take, open, buy, give and show.  You may run into Anchorhead residents.  You can talk to them by saying "say hello to Bob" or "ask bob about anchorhead" and sometimes: "show bob gun"...  Somethings in anchorhead are locked, to unlock them say "unlock mystery with key."  Everything locked must be unlocked with something! </description>
+However, I only undertand basic commands like: go to, look, take, open, buy, give and show.  You may run into Anchorhead residents.  You can talk to them by saying "say hello to Bob" or "ask bob about anchorhead" and sometimes: "show bob gun"...  Be sure to "say hello" to each of our residents!  Somethings in anchorhead are locked, to unlock them say "unlock mystery with key."  Everything locked must be unlocked with something! </description>
 				<animation action="idle">
 					<frame time="100">leaflet</frame>
 				</animation>
