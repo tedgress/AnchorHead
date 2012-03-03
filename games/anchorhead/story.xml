@@ -90,7 +90,7 @@
 			</condition>
 		</trigger>
 		<hints>
-			<hint text="Some say there is a safe in the mansion, it's too bad Anchorhead doesn't had a locksmith.  Unless they wrote down that combo, we'll never know what's in there." subtlety="3"/>
+			<hint text="Some say there is a safe in the mansion, it's too bad Anchorhead doesn't had a locksmith.  I bet it's under somebody's pillow." subtlety="3"/>
 		</hints>
 	</plotpoint>
 
@@ -202,7 +202,7 @@
 					text="Here you have, the book you had reserved."/>
 		</effects>
 		<hints>
-			<hint text="The library has some great local history books.  It's totatlly lacking in steampunk novels though..." subtlety="3"/>
+			<hint text="The library has some great local history books.  It's totally lacking in steampunk novels though..." subtlety="3"/>
 		</hints>
 	</plotpoint>
 
@@ -234,7 +234,7 @@
 					text="There you go! It was a simple logic puzzle!"/>
 		</effects>
 		<hints>
-			<hint text="I've been working on this rubik's cube for days.  The magic-shop owner can solve these things in 18.2 seconds!" subtlety="3"/>
+			<hint text="I've been working on this puzzle for days.  The magic-shop owner can solve these things in 18.2 seconds!" subtlety="3"/>
 		</hints>
 	</plotpoint>
 
@@ -309,7 +309,7 @@
 					text="Here you are!!!"/>
 		</effects>
 		<hints>
-			<hint text="I've seen magic amulets at the shop...  It'll protect you from anything, it advertises, even curses!" subtlety="3"/>
+			<hint text="I've seen a magic amulet at the shop...  It'll protect you from anything, it advertises, even curses!" subtlety="3"/>
 		</hints>
 	</plotpoint>
 
@@ -482,7 +482,7 @@
 					text="Thanks my friend, now I trust you."/>
 		</effects>
 		<hints>
-			<hint text="The bum will talk your ear off, especially when he's drunk..." subtlety="3"/>
+			<hint text="The bum will tell you secrets, especially when he's drunk..." subtlety="3"/>
 		</hints>
 	</plotpoint>
 
