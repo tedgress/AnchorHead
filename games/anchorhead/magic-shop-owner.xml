@@ -37,9 +37,9 @@
 	</conversation-rule>	
 	<conversation-rule>		
 		<input topic="hello"/>
-		<output topic="reply" text="Hello there! take a look at my apparatus."/>
+		<output topic="reply" text="Hello there! take a look at my apparatus and my items!"/>
 		<output topic="reply" text="Hello! Please take a look at the items."/>
-		<output topic="reply" text="Wellcome to my shop!"/>
+		<output topic="reply" text="Welcome to my shop!  Ask me about items!"/>
 	</conversation-rule>
 	<conversation-rule>		
 		<input topic="bye"/>
