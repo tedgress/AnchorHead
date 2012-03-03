@@ -66,12 +66,7 @@
 	</conversation-rule>	
 	<conversation-rule>		
 		<input topic="hello"/>
-		<output topic="reply" text="Hello there! Whould you like a drink?"/>
-		<output topic="reply" text="How are you doing, sir?"/>
-		<output topic="reply" text="Hello!"/>
-		<output topic="reply" text="Hi!"/>
-		<output topic="reply" text="Hi there!"/>
-		<output topic="reply" text="Wellcome to my bar!"/>
+		<output topic="reply" text="Welcome to my bar!  Ask me about drinks!"/>
 	</conversation-rule>
 	<conversation-rule>		
 		<input topic="bye"/>
