@@ -7,6 +7,8 @@ import ifgameengine.IFTileManager;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.Properties;
@@ -61,12 +63,17 @@ public class GraphicalInterfaceJFrame extends JPanel {
     {
 
     	
-    		
-        String loggerName = "IF-log-" + new Date().getTime() + ".txt";
+    	DateFormat df = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+		java.util.Date date = new java.util.Date();
+			
+		String timestamp = df.format(date);
+			
+        String loggerName = "IF-log-" + timestamp + ".txt";
         m_logger = new PrintStream(new FileOutputStream(new File(loggerName)));
 
         String gameToLoad = "games/anchorhead";
         GraphicalInterfaceJFrame game = new GraphicalInterfaceJFrame();
+        
         
         if (args.length > 0) {
     		if ( args[0].equals("-cheat"))
