@@ -25,7 +25,66 @@ public class PlayerPatron {
 		//TED: (from Josh) I will support the toString method as a way of getting the hint text
 		//this.talkToSelf(hint.toString(), story_state, game_state);
 		//this.talkToDrunk(hint.toString(), story_state, game_state);
-		this.drunkTalksToHimself(hint.toString(), story_state, game_state);
+		//this.drunkTalksToHimself(hint.toString(), story_state, game_state);
+		
+		String currentRoom = game_state.containsObject("player").getRoom().getID();
+		
+
+		/*
+		 *  Room Names (a.k.a. places to throw a keggar??)
+		 * 
+		 *  street
+		 *  park
+		 *  livingroom
+		 *  hall - Talking Portrait
+		 *  backyard - Crypt Ghost
+		 *  bedroom - 
+		 *  basement - 
+		 *  bar - Crazy Drunk
+		 *  magic-shop - Talking Grimoire
+		 *  library - Scholar
+		 *  observatory
+		 *  sewers - Rat King
+		 */
+		
+		
+		if (currentRoom.equals("street")) {
+			
+		} else if (currentRoom.equals("park")) {
+			
+		} else if (currentRoom.equals("livingroom")) {
+			
+		} else if (currentRoom.equals("hall")) {
+			
+		} else if (currentRoom.equals("backyard")) {
+			
+		} else if (currentRoom.equals("bedroom")) {
+			
+		} else if (currentRoom.equals("basement")) {
+			
+		} else if (currentRoom.equals("bar")) {
+			
+			//if main character is in the bar....and is frustrated...the crazy drunk starts to
+			//talk to himself giving away hints.
+			this.hCharkTalksToHimself(hint.toString(), "crazy-drunk", story_state, game_state);
+			
+		} else if (currentRoom.equals("magic-shop")) {
+			
+		} else if (currentRoom.equals("library")) {
+			
+		} else if (currentRoom.equals("observatory")) {
+			
+		} else if (currentRoom.equals("sewers")) {
+			
+			
+			game_state.enqueueAction(new IFAction("player", "talk", "rat-king",
+					"reply", "I AM the mighty rat king..."), story_state);
+			
+			this.talkToPlayerHint(hint.toString(), "rat-king", story_state, game_state);
+			
+		}
+		
+		
 		
 		return true;
 		
@@ -52,12 +111,12 @@ public class PlayerPatron {
 	 * @param story_state The current story state
 	 * @param game_state The current game state
 	 */
-	protected void talkToDrunk(String message, IFStoryState story_state,
+	protected void talkToPlayerHint(String message, String character_id, IFStoryState story_state,
 			IFGameState game_state) {
 
 		
 		//talker, talk command, talk-receiver, reply, message
-		game_state.enqueueAction(new IFAction("player", "talk", "crazy-drunk",
+		game_state.enqueueAction(new IFAction("player", "talk", character_id,
 				"reply", message), story_state);
 
 	}
@@ -70,12 +129,12 @@ public class PlayerPatron {
 	 * @param story_state The current story state
 	 * @param game_state The current game state
 	 */
-	protected void drunkTalksToBartender(String message, IFStoryState story_state,
+	protected void hintCharacterTalksToAnother(String message, String hCharID, String destCharID, IFStoryState story_state,
 			IFGameState game_state) {
 
 		
 		//talker, talk command, talk-receiver, reply, message
-		game_state.enqueueAction(new IFAction("crazy-drunk", "talk", "bartender",
+		game_state.enqueueAction(new IFAction(hCharID, "talk", destCharID,
 				"reply", message), story_state);
 
 	}
@@ -87,12 +146,12 @@ public class PlayerPatron {
 	 * @param story_state The current story state
 	 * @param game_state The current game state
 	 */
-	protected void drunkTalksToHimself(String message, IFStoryState story_state,
+	protected void hCharkTalksToHimself(String message, String hCharID, IFStoryState story_state,
 			IFGameState game_state) {
 
 		
 		//talker, talk command, talk-receiver, reply, message
-		game_state.enqueueAction(new IFAction("crazy-drunk", "talk", "crazy-drunk",
+		game_state.enqueueAction(new IFAction(hCharID, "talk", hCharID,
 				"reply", message), story_state);
 
 	}
