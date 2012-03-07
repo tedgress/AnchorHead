@@ -766,6 +766,27 @@ However, this game only understands very basic commands like "take","look","go t
 				<description>The main street of Anchorhead.</description>
 				<destination room="street" x="0" y="256" />
 			</object>
+			
+			<object type="character" id="rat-king" x="300" y="200">
+				<description>A vicious, gaudy scavenger.</description>
+				<inventory>
+				</inventory>
+				<action>
+					<type>idle</type>
+				</action>
+				<animations>
+					<animation action="idle">
+						<frame time="100">rat-king</frame>
+					</animation>
+					<animation action="talk">
+						<frame time="5">rat-king</frame>
+						<frame time="5">rat-king</frame>
+					</animation>
+				</animations>
+				<ai>bum.xml</ai>
+			</object>
+			
+			
 		</objects>
 	</room>
 
