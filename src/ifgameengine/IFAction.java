@@ -21,7 +21,10 @@ public class IFAction {
 	public static final String TALK = "talk";
 	public static final String BUY = "buy";
 	public static final String GIVE = "give";
-        
+    
+	//stationary when executing talking action
+	public boolean stationary = false;
+	
 	String m_actor;
 	String m_type;
 	

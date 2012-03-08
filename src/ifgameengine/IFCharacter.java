@@ -213,14 +213,14 @@ public class IFCharacter extends IFObject {
             } else {
                 Point pos = null;
 //				pos = m_room.m_navigationGraph.getNextPositionSimple(new Point(m_x,m_y), new Point(destination.m_x,destination.m_y), MOVE_SPEED);
-                if (m_path == null) {
+                if (m_path == null && m_action.stationary == false) {
                     m_path = m_room.m_navigationGraph.getPath(new Point(m_x, m_y), new Point(destination.m_x, destination.m_y));
                 }
-                if (m_path != null) {
+                if (m_path != null && m_action.stationary == false) {
                     pos = m_room.m_navigationGraph.walkPath(new Point(m_x, m_y), m_path, MOVE_SPEED);
                 }
-
-                if (pos != null) {
+                
+                if (pos != null && m_action.stationary == false) {
                     m_x = pos.m_x;
                     m_y = pos.m_y;
                 } else {
@@ -371,6 +371,7 @@ public class IFCharacter extends IFObject {
                                 if (output != null) {
                                     output.add(this.m_ID + " says \"" + m_action.m_text + "\" to the " + m_action.m_object);
                                 }
+                                
                             }
 
                             m_room.m_gamestate.succeededAction(m_action);

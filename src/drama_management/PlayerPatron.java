@@ -73,12 +73,17 @@ public class PlayerPatron {
 			//if main character is in the magic shop....and is frustrated...the grimoire of 
 			//secrets flies at him
 			
-			
-			game_state.enqueueAction(new IFAction("grimoire", "talk", "player",
-					null, "Are you frustrated player?"), story_state);
 
+			IFAction myAction = new IFAction("grimoire", IFAction.TALK, "grimoire", IFAction.IDLE, "Are you having trouble?");
+			IFAction myAction2 = new IFAction("grimoire", IFAction.TALK, "grimoire", IFAction.IDLE, "I, the book of shadows, may be of service....");
+			IFAction myAction3 = new IFAction("grimoire", IFAction.TALK, "grimoire", IFAction.IDLE, hint.toString());
+			myAction.stationary = true;
+			myAction2.stationary = true;
+			myAction3.stationary = false;
+			game_state.enqueueAction(myAction, story_state);
+			game_state.enqueueAction(myAction2, story_state);
+			game_state.enqueueAction(myAction3, story_state);
 			
-			//!this.hintCharacterTalksToAnother("Are you frustrated player?", "grimoire", "player",  story_state, game_state);
 			
 			//game_state.enqueueAction(new IFAction("grimoire", "talk", "player",
 			//		"reply", "Are you frustrated player? "), story_state);

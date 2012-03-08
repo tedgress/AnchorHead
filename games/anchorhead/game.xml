@@ -580,6 +580,7 @@ However, this game only understands very basic commands like "take","look","go t
 			<point id="C" x="160" y="352" />
 			<point id="D" x="160" y="192" />
 			<point id="OWNER" x="144" y="128" />
+			<point id="HINT" x="144" y="90" />
 			<link p1="A" p2="B" />
 			<link p1="B" p2="C" />
 			<link p1="C" p2="D" />

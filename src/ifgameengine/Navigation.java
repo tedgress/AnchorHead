@@ -20,6 +20,7 @@ public class Navigation {
 	LinkedList<Point> m_points = new LinkedList<Point>();
 	LinkedList<Link> m_links = new LinkedList<Link>();
 	
+	
 	public Navigation() {		
 	}
 	
