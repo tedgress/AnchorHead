@@ -658,10 +658,7 @@ However, this game only understands very basic commands like "take","look","go t
 					<animation action="idle">
 						<frame time="100">grimoire</frame>
 					</animation>
-					<animation action="talk">
-						<frame time="5">grimoire</frame>
-						<frame time="5">grimoire</frame>
-					</animation>
+					
 				</animations>
 				<ai>bartender.xml</ai>
 			</object>
