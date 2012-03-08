@@ -69,6 +69,27 @@ public class PlayerPatron {
 			this.hCharkTalksToHimself(hint.toString(), "crazy-drunk", story_state, game_state);
 			
 		} else if (currentRoom.equals("magic-shop")) {
+
+			//if main character is in the magic shop....and is frustrated...the grimoire of 
+			//secrets flies at him
+						
+			
+			game_state.enqueueAction(new IFAction("grimoire", "talk", "player",
+					"reply", "Are you frustrated player?"), story_state);
+
+			
+			//!this.hintCharacterTalksToAnother("Are you frustrated player?", "grimoire", "player",  story_state, game_state);
+			
+			//game_state.enqueueAction(new IFAction("grimoire", "talk", "player",
+			//		"reply", "Are you frustrated player? "), story_state);
+			
+
+			//game_state.enqueueAction(new IFAction("grimoire", "talk", "player",
+			//		"reply", "I, the GRIMOIRE OF SECRETS, shall aid you."), story_state);
+			
+			
+			//this.talkToPlayerHint(hint.toString(), "grimoire", story_state, game_state);
+			
 			
 		} else if (currentRoom.equals("library")) {
 			
@@ -116,7 +137,7 @@ public class PlayerPatron {
 
 		
 		//talker, talk command, talk-receiver, reply, message
-		game_state.enqueueAction(new IFAction("player", "talk", character_id,
+		game_state.enqueueAction(new IFAction(character_id, "talk", "player",
 				"reply", message), story_state);
 
 	}
@@ -134,7 +155,7 @@ public class PlayerPatron {
 
 		
 		//talker, talk command, talk-receiver, reply, message
-		game_state.enqueueAction(new IFAction(hCharID, "talk", destCharID,
+		game_state.enqueueAction(new IFAction(destCharID, "talk", hCharID,
 				"reply", message), story_state);
 
 	}

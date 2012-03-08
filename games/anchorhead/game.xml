@@ -631,6 +631,7 @@ However, this game only understands very basic commands like "take","look","go t
 						</animation>
 					</object>
 				</inventory>
+				
 				<action>
 					<type>idle</type>
 				</action>
@@ -644,6 +645,25 @@ However, this game only understands very basic commands like "take","look","go t
 					</animation>
 				</animations>
 				<ai>magic-shop-owner.xml</ai>
+			</object>
+			
+			<object type="character" id="grimoire" x="450" y="190">
+				<description>A mysterious book with a sleeve of tanned skin.</description>
+				<inventory>
+				</inventory>
+				<action>
+					<type>idle</type>
+				</action>
+				<animations>
+					<animation action="idle">
+						<frame time="100">grimoire</frame>
+					</animation>
+					<animation action="talk">
+						<frame time="5">grimoire</frame>
+						<frame time="5">grimoire</frame>
+					</animation>
+				</animations>
+				<ai>bartender.xml</ai>
 			</object>
 
 		</objects>

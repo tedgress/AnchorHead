@@ -343,5 +343,12 @@
 	  <y>0</y>
 	  <w>32</w>
 	  <h>32</h>
-	</tile>		
+	</tile>
+	 <tile id = "grimoire">
+	  <img>graphics/grimoire.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>				
 </tileset>
