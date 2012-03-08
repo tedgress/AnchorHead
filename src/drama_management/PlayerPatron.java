@@ -72,10 +72,13 @@ public class PlayerPatron {
 
 			//if main character is in the magic shop....and is frustrated...the grimoire of 
 			//secrets flies at him
-						
+			IFAction newAction =  new IFAction("grimoire", "talk", "player",
+					"talk", "Are you frustrated player?");
 			
-			game_state.enqueueAction(new IFAction("grimoire", "talk", "player",
-					"reply", "Are you frustrated player?"), story_state);
+			//newAction.
+			
+			
+			//game_state.enqueueAction(), story_state);
 
 			
 			//!this.hintCharacterTalksToAnother("Are you frustrated player?", "grimoire", "player",  story_state, game_state);
