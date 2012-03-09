@@ -8,6 +8,18 @@ import org.jdom.Element;
 public class IFConditionAction extends IFCondition {
 	IFAction m_action = null;
 	
+	/**
+	 * Constructor used for PCG
+	 * @param action
+	 */
+	public IFConditionAction(IFAction action){
+		this.m_action = action;
+	}
+	
+	public IFConditionAction(){
+		//nothing special
+		
+	}
 	public boolean evaluate(IFGameState game,IFStoryState story) {
 		return game.succeededActionP(m_action);
 	}

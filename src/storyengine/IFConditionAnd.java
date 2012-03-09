@@ -10,6 +10,18 @@ public class IFConditionAnd extends IFCondition {
 
 	LinkedList<IFCondition> m_conditions = new LinkedList<IFCondition>();
 	
+	/**
+	 * Constructor for PCG
+	 * @param conditions
+	 */
+	public IFConditionAnd(LinkedList<IFCondition> conditions){
+		this.m_conditions = conditions;
+	}
+	
+	public IFConditionAnd(){
+		//nothing special
+	}
+	
 	public boolean evaluate(IFGameState game,IFStoryState story) {
 		for(IFCondition c:m_conditions) if (!c.evaluate(game,story)) return false;
 		return true;
