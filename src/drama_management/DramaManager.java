@@ -62,7 +62,7 @@ public class DramaManager implements IFDramaManager {
 
 	@Override
 	public void cheat(boolean realHints) {
-		// TODO Auto-generated method stub
+		
 		if (realHints){
 			this.hint_repo = new HintRepository();
 			this.hint_repo.set_time_between_hints(0);
