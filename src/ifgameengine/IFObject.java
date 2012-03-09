@@ -21,6 +21,23 @@ public abstract class IFObject {
 		m_y = a_y;
 		m_animation = null;
 	}
+	
+	/**
+	 * Constructor for PCG
+	 * 
+	 * @param objectID
+	 * @param location
+	 * @param a_x
+	 * @param a_y
+	 * @param description
+	 */
+	public IFObject(String objectID, IFRoom location, float a_x, float a_y, String description){
+		this.m_ID = objectID;
+		this.m_room = location;
+		this.m_x = a_x;
+		this.m_y = a_y;
+		this.m_description = description;
+	}
 		
 	public static IFObject loadFromXML(Element root,IFRoom r,String path) {
 		String type = root.getAttributeValue("type");
