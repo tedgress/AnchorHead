@@ -364,5 +364,12 @@
 	  <y>0</y>
 	  <w>64</w>
 	  <h>64</h>
-	</tile>					
+	  </tile>
+	<tile id = "scholar">
+	  <img>graphics/scholar.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>55</w>
+	  <h>55</h>
+	  </tile>
 </tileset>

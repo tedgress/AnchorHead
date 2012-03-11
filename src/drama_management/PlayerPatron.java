@@ -129,6 +129,18 @@ public class PlayerPatron {
 			
 		} else if (currentRoom.equals("observatory")) {
 			
+			
+			IFAction myAction = new IFAction("scholar", IFAction.TALK, "scholar", IFAction.IDLE, "..mmmhmm...mmmhmmm...");
+			IFAction myAction2 = new IFAction("scholar", IFAction.TALK, "scholar", IFAction.IDLE, "Yes..yes...may I help you? Oh I see...");
+			IFAction myAction3 = new IFAction("scholar", IFAction.TALK,  "scholar", IFAction.IDLE, hint.toString());
+			myAction.stationary = true;
+			myAction2.stationary = true;
+			myAction3.stationary = false;
+			game_state.enqueueAction(myAction, story_state);
+			game_state.enqueueAction(myAction2, story_state);
+			game_state.enqueueAction(myAction3, story_state);
+
+			
 		} else if (currentRoom.equals("sewers")) {
 			
 			

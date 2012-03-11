@@ -796,6 +796,24 @@ However, I only undertand basic commands like: go to, look, take, open, buy, giv
 					<frame time="100">telescope</frame>
 				</animation>
 			</object>
+			
+				<object type="character" id="scholar" x="250" y="190">
+				<description>A floppy hat. You can hear muttering from beneath it.</description>
+				<inventory>
+				</inventory>
+				<action>
+					<type>idle</type>
+				</action>
+				<animations>
+					<animation action="idle">
+						<frame time="100">scholar</frame>
+					</animation>
+					
+				</animations>
+				<ai>bartender.xml</ai>
+			</object>
+	
+			
 		</objects>
 	</room>
 
