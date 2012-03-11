@@ -234,6 +234,19 @@ public class IFGameState {
 		return l;
 	}
 	
+	public List<IFCharacter> getAllNPCs() {
+		List<IFCharacter> l = new LinkedList<IFCharacter>();
+		for (IFObject o : this.getAllObjects()){
+			
+			if (o.getClass().isAssignableFrom(IFCharacter.class))
+				if (!o.getID().equals("player"))
+					l.add((IFCharacter)o);
+			
+		}
+		
+		return l;
+	}
+	
 	public IFObject contains(String id) {
 		for(IFRoom r:m_map) {
 			IFObject o = r.contains(id);
