@@ -372,4 +372,11 @@
 	  <w>55</w>
 	  <h>55</h>
 	  </tile>
+	 <tile id = "haunted_frame">
+	  <img>graphics/frame.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>24</w>
+	  <h>32</h>
+	  </tile>
 </tileset>

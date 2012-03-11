@@ -332,6 +332,24 @@ However, I only undertand basic commands like: go to, look, take, open, buy, giv
 				<description>The basement of Verlag Mansion.</description>
 				<destination room="basement" x="448" y="128" />
 			</object>
+			
+			<object type="character" id="haunted_frame" x="300" y="65">
+				<description>Whispers emminate from an empty picture frame</description>
+				<inventory>
+				</inventory>
+				<action>
+					<type>idle</type>
+				</action>
+				<animations>
+					<animation action="idle">
+						<frame time="100">haunted_frame</frame>
+					</animation>
+					
+				</animations>
+				<ai>bartender.xml</ai>
+			</object>
+	
+			
 		</objects>
 	</room>
 
@@ -364,6 +382,7 @@ However, I only undertand basic commands like: go to, look, take, open, buy, giv
 				<description>The hall of Verlag Mansion.</description>
 				<destination room="hall" x="224" y="128" />
 			</object>
+		
 
 			<object type="container" id="bed" x="128" y="32">
 				<open>true</open>

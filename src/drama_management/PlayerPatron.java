@@ -37,13 +37,13 @@ public class PlayerPatron {
 		 *  park
 		 *  livingroom
 		 *  hall - Talking Portrait
-		 *  backyard - Crypt Ghost
+		 *  backyard - Crypt Ghosts X
 		 *  bedroom - 
 		 *  basement - 
 		 *  bar - Crazy Drunk x
 		 *  magic-shop - Talking Grimoire x
 		 *  library - Wizard's Hat x
-		 *  observatory - Wizard/Astronomer/Physicist?
+		 *  observatory - scholar X
 		 *  sewers - Rat King x
 		 */
 		
@@ -55,6 +55,18 @@ public class PlayerPatron {
 		} else if (currentRoom.equals("livingroom")) {
 			
 		} else if (currentRoom.equals("hall")) {
+			
+			IFAction myAction = new IFAction("haunted_frame", IFAction.TALK, "haunted_frame", IFAction.IDLE, "...<whisper>...");
+			IFAction myAction2 = new IFAction("haunted_frame", IFAction.TALK, "haunted_frame", IFAction.IDLE, "..<whisper>..");
+			IFAction myAction3 = new IFAction("haunted_frame", IFAction.TALK,  "haunted_frame", IFAction.IDLE, hint.toString());
+			myAction.stationary = true;
+			myAction2.stationary = true;
+			myAction3.stationary = true;
+			game_state.enqueueAction(myAction, story_state);
+			game_state.enqueueAction(myAction2, story_state);
+			game_state.enqueueAction(myAction3, story_state);
+			
+		
 			
 		} else if (currentRoom.equals("backyard")) {
 			
