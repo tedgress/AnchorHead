@@ -61,7 +61,7 @@ public class PlayerModel implements AbstractPlayerModel {
 
 		int isQuestActive = 0;
 		if ( Quest.getQuest().isQuestActive() )
-			isQuestActive = 10;
+			isQuestActive = 12;
 		
 		// Log frustration levels
 		log.finest(game_state.getCycle() + " "
