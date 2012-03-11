@@ -12,22 +12,23 @@ import ifgameengine.IFCharacter;
 import ifgameengine.IFGameState;
 
 public class Quest {
-	
+
 	private static Quest quest = null;
-	
+
 	IFCharacter questGiver = null;
 	IFGameState game_state = null;
 	IFStoryState story_state = null;
 	private static int nextNumber = 0;
-	
-	public static int getNextSequenceNumber(){
+	private boolean questActive = false;
+
+	public static int getNextSequenceNumber() {
 		Quest.nextNumber++;
-		
+
 		return Quest.nextNumber;
 	}
-	
+
 	private LinkedList<PCG_TerminalSymbol> quest_expression = new LinkedList<PCG_TerminalSymbol>();
-	
+
 	public IFStoryState getStory_state() {
 		return story_state;
 	}
@@ -37,7 +38,7 @@ public class Quest {
 	}
 
 	String questName = null;
-	
+
 	public String getQuestName() {
 		return questName;
 	}
@@ -62,75 +63,83 @@ public class Quest {
 		this.questGiver = questGiver;
 	}
 
-	private Quest(){
-		//private default constructor
+	private Quest() {
+		// private default constructor
 	}
-	
+
 	public static Quest getQuest() {
-		if ( null == Quest.quest )
+		if (null == Quest.quest)
 			Quest.quest = new Quest();
-		
+
 		return Quest.quest;
 	}
-	
-	public void addToQuest(PCG_TerminalSymbol t){
+
+	public void addToQuest(PCG_TerminalSymbol t) {
 		this.quest_expression.add(t);
 		this.story_state.insertPlotpoint_pcg(t.evaluate());
 	}
-	
-	public PCG_TerminalSymbol getLastTermOfType(Class<?> class_type){
-		
-		Queue<PCG_TerminalSymbol> symbols = new LinkedList<PCG_TerminalSymbol>(this.quest_expression);
-		
-		while (!symbols.isEmpty()){
-			if ( symbols.peek().getClass().isAssignableFrom(class_type) )
+
+	public PCG_TerminalSymbol getLastTermOfType(Class<?> class_type) {
+
+		Queue<PCG_TerminalSymbol> symbols = new LinkedList<PCG_TerminalSymbol>(
+				this.quest_expression);
+
+		while (!symbols.isEmpty()) {
+			if (symbols.peek().getClass().isAssignableFrom(class_type))
 				return symbols.peek();
-			
+
 			symbols.poll();
 		}
-		
+
 		return null;
-		
-		
-		
+
 	}
-	
-	public LinkedList<String> getQuestStory(){
-		
+
+	public LinkedList<String> getQuestStory() {
+
 		LinkedList<String> qStory = new LinkedList<String>();
-		
-		for (PCG_TerminalSymbol s : this.quest_expression){
+
+		for (PCG_TerminalSymbol s : this.quest_expression) {
 			if (!PCG_Intro.class.isInstance(s))
 				qStory.add(s.describe());
 		}
-		
+
 		return qStory;
 	}
-	
-	public IFPlotPoint getLastPlotpoint(){
+
+	public IFPlotPoint getLastPlotpoint() {
 		if (this.quest_expression.isEmpty())
 			return null;
 		else
 			return this.quest_expression.getLast().evaluate();
 	}
-	
-	public boolean isQuestComplete(){
-		if (this.story_state == null )
-			return false;
-		
-		else if (IFPlotPoint.FINISHED ==  this.story_state.getPlotPointState( this.quest_expression.getLast().evaluate() ))
-			return true;
-		else
-			return false;
-		
+
+	public void setQuestActive() {
+		this.questActive = true;
+
 	}
-	
-	public boolean isQuestActive(){
-		if (null != quest && !this.isQuestComplete())
+
+	public boolean isQuestActive() {
+
+		if (!this.questActive)
+			return this.questActive;
+		else if (this.isQuestComplete()) {
+			this.questActive = false;
+		}
+
+		return this.questActive;
+
+	}
+
+	protected boolean isQuestComplete() {
+
+		if (this.getStory_state().getPlotPointState(
+				this.quest_expression.getLast().evaluate()) == IFPlotPoint.FINISHED) {
 			return true;
+
+		}
+
 		return false;
 	}
-	
-
 
 }
