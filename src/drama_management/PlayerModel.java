@@ -35,7 +35,7 @@ public class PlayerModel implements AbstractPlayerModel {
 	public PlayerModel() {
 		log.setLevel(Level.FINEST);
 		try {
-			DateFormat df = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+			DateFormat df = new SimpleDateFormat("yyyy-MM-dd_HH_mm_ss");
 			java.util.Date date = new java.util.Date();
 
 			String timestamp = df.format(date);
