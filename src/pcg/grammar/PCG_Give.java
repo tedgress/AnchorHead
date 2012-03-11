@@ -109,7 +109,7 @@ public class PCG_Give implements PCG_TerminalSymbol {
 	}
 	
 	public String describe(){
-		return "Go to the " + this.giveeRoom.getID() + " and give the " + this.itemToGive.getID() + " to the " + this.givee.getID();
+		return "Go to the " + this.giveeRoom.getID() + " and give the " + this.itemToGive.getID() + " to the " + this.givee.getID() +".  ";
 	}
 
 }

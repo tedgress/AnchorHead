@@ -121,7 +121,7 @@ public class PCG_Gather implements PCG_TerminalSymbol {
 	
 	public String describe(){
 		
-		return "Go out and seek the " + this.item.getID();
+		return "Go out and seek the " + this.item.getID() +".  ";
 	}
 	
 	public IFItemObject getItem() {

@@ -90,7 +90,7 @@ public class PCG_Explore implements PCG_TerminalSymbol {
 		if (this.exploreLoc == null)
 			throw new NullPointerException();
 		
-		return "You must go to the " + this.exploreLoc.getID() + ".";
+		return "You must go to the " + this.exploreLoc.getID() + ".  ";
 	}
 	
 	public IFRoom getLocation(){
