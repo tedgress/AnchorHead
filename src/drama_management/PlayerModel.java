@@ -11,6 +11,8 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import pcg.Quest;
+
 import ifgameengine.IFAction;
 import ifgameengine.IFGameState;
 import ifgameengine.Pair;
@@ -22,6 +24,7 @@ public class PlayerModel implements AbstractPlayerModel {
 	String failedInputResponse = "Say what?";
 	private static final int ONE_MINUTE_IN_CYCLES = 1200;
 	private static final int FRUSTRATION_LIMIT = 20;
+	private static final int VERY_FRUSTRATED_LIMIT = 30;
 	protected HashMap<Integer, Integer> cyclesToMoves = new HashMap<Integer, Integer>();
 	protected Stack<Pair<Integer, Integer>> significantMoveHistory = new Stack<Pair<Integer, Integer>>();
 	protected int lastMoveNumber = 0;
@@ -56,17 +59,22 @@ public class PlayerModel implements AbstractPlayerModel {
 			this.lastMoveNumber = game_state.getNumberPlayerMoves();
 		}
 
-
+		int isQuestActive = 0;
+		if ( Quest.getQuest().isQuestActive() )
+			isQuestActive = 10;
+		
 		// Log frustration levels
 		log.finest(game_state.getCycle() + " "
 		        + this.calculate_f_c(game_state) + " "
 				+ this.calculate_r_n(game_state) + " "
 				+ this.calculate_m_p(game_state) + " "
-				+ this.totalFrustration(game_state, hint_repo) + " "
-				+ PlayerModel.FRUSTRATION_LIMIT);
+				+ this.totalFrustration(game_state) + " "
+				+ isQuestActive + " " +
+				+ PlayerModel.FRUSTRATION_LIMIT + " "
+				+ PlayerModel.VERY_FRUSTRATED_LIMIT);
 
-		if (this.totalFrustration(game_state, hint_repo) >= PlayerModel.FRUSTRATION_LIMIT
-				&& this.totalFrustration(game_state, hint_repo) != 0) {
+		if (this.totalFrustration(game_state) >= PlayerModel.FRUSTRATION_LIMIT
+				&& this.totalFrustration(game_state) != 0) {
 
 			return true;
 		}
@@ -74,13 +82,25 @@ public class PlayerModel implements AbstractPlayerModel {
 
 		return false;
 	}
+	
+	public boolean isPlayerVeryFrustrated(IFGameState game_state){
+		
+		if (this.totalFrustration(game_state) >= PlayerModel.VERY_FRUSTRATED_LIMIT
+				&& this.totalFrustration(game_state) != 0) {
+
+			return true;
+		}
+
+
+		return false;
+		
+	}
 
 	// Frustration is measured by three factors:
 	// 1. Unrecognized input, c, calculated by f(c)
 	// 2. Repeated commands, r, calculated by r(n)
 	// 3. Moves since last plotpoint, m(p)
-	protected int totalFrustration(IFGameState game_state,
-			AbstractHintMachine hint_repo) {
+	protected int totalFrustration(IFGameState game_state) {
 		int k_r = 10; // Factor for repeated commands
 		int k_c = 3; // Factor for unrecognized commands
 		int k_m = 1; // Factor for moves since last plot point
