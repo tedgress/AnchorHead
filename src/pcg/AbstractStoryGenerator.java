@@ -1,4 +1,4 @@
-package ProceduralContentGeneration;
+package pcg;
 
 import java.util.List;
 

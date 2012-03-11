@@ -12,6 +12,22 @@ public class IFItemObject extends IFObject {
 		super(a_ID,a_room,a_x,a_y);
 	}
 	
+		/**
+	 * Constructor for PCG
+	 * 
+	 * @param objectID
+	 * @param location
+	 * @param a_x
+	 * @param a_y
+	 * @param description
+	 */
+	public IFItemObject(String objectID, IFRoom location, float a_x, float a_y, String description){
+		
+		super(objectID, location, a_x, a_y, description);
+		
+		this.synonyms.add(objectID);
+	}
+	
 	public static IFItemObject loadFromXML(Element root,IFRoom r,String path) {
 		String id = null;
 		float x = 0;

@@ -38,7 +38,7 @@ public abstract class IFObject {
 		this.m_y = a_y;
 		this.m_description = description;
 	}
-		
+	
 	public static IFObject loadFromXML(Element root,IFRoom r,String path) {
 		String type = root.getAttributeValue("type");
 		

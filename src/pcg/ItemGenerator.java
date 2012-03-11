@@ -1,4 +1,4 @@
-package ProceduralContentGeneration;
+package pcg;
 
 import ifgameengine.Pair;
 
@@ -13,16 +13,14 @@ public class ItemGenerator {
 
 	
 	public static LinkedList<Pair<String,String>> items = new LinkedList<Pair<String,String>>();
-	private static Random rng = null; 
+
 	
-	public static Pair<String,String> getRandomItem(int seed){
+	public static Pair<String,String> getRandomItem(){
 		if (ItemGenerator.items.isEmpty())
 			ItemGenerator.loadItemsFromFile("listOfMagicalItems.txt");
+
 		
-		if (ItemGenerator.rng == null)
-			ItemGenerator.rng = new Random(seed);
-		
-		return ItemGenerator.items.get(ItemGenerator.rng.nextInt(ItemGenerator.items.size() - 1));
+		return ItemGenerator.items.get(PCG_Random.get_rng().nextInt(ItemGenerator.items.size() - 1));
 		
 		
 	}
@@ -38,7 +36,7 @@ public class ItemGenerator {
 					StringTokenizer st = new StringTokenizer(str, "-");
 
 					Pair<String, String> item = new Pair<String, String>(
-							st.nextToken(), st.nextToken());
+							st.nextToken().trim(), st.nextToken());
 
 					ItemGenerator.items.add(item);
 				}

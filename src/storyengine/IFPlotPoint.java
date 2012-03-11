@@ -23,9 +23,19 @@ public class IFPlotPoint {
 	LinkedList<IFHint> m_hints = new LinkedList<IFHint>();
 	int m_endgame = -1;		// if this is different than -1, the game will end in 'm_endgame' cycles
 	
+	/**
+	 * Used for PCG 
+	 * 
+	 * @param name
+	 * @param plot
+	 * @param precondition
+	 * @param trigger
+	 * @param effects
+	 * @param hints
+	 */
 	public IFPlotPoint(String name, String plot, IFCondition precondition, IFCondition trigger, LinkedList<IFAction> effects, LinkedList<IFHint> hints){
 		
-		if (name == null || plot == null || precondition == null || trigger == null){
+		if (name == null || plot == null  || trigger == null){
 			throw new NullPointerException("Null parameters in plotpoint");
 		}
 		
@@ -125,6 +135,13 @@ public class IFPlotPoint {
 		if (!this.getHints().isEmpty())
 			return true;
 		return false;
+	}
+	
+	public void replaceEffects(LinkedList<IFAction> newEffects){
+		//This is a kludge to update the story speech for the quest giver
+		
+		this.m_effects = newEffects;
+		
 	}
 	
 }

@@ -84,6 +84,16 @@ public class SimpleNLP {
         }
     }
 
+    /**
+     * Dynamic insert objects for PCG
+     * 
+     * @param object
+     */
+    public static void insertObjectSynonym_pcg(IFObject object){
+    	for(String name:object.getSynonyms()) {
+            object_synonyms.put(name,object.getID());
+        }
+    }
     
     // This method is slightly smarter than the one below, but still VERY basic, it simply looks for appearances of the synonyms of actions and objects in the sentence
     public static IFAction synonymParseActionString(String focus_character, String text) { 

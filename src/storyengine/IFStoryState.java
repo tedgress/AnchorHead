@@ -33,6 +33,17 @@ public class IFStoryState {
 		}
 	}
 	
+	/**
+	 * Insert PP for PCG
+	 * 
+	 * @param pp
+	 */
+	public void insertPlotpoint_pcg(IFPlotPoint pp){
+		this.m_story.insertPlotpoint(pp);
+		
+		this.m_storyState.put(pp.getName(), IFPlotPoint.READY);
+	}
+	
 	public IFStoryState(IFStoryState ss) {
 		m_story = ss.m_story;
 		m_storyState = new HashMap<String,Integer>();

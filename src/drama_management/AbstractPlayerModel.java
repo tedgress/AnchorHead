@@ -8,6 +8,7 @@ import storyengine.IFStoryState;
 public interface AbstractPlayerModel {
 	
 	public boolean isPlayerFrustrated(IFStoryState story_state, IFGameState game_state, List<String> logOutput, AbstractHintMachine hint_repo);
+	public boolean isPlayerVeryFrustrated(IFGameState game_state);
 	
 	public String addBadUserInput(String input, IFGameState game_state);
 	
