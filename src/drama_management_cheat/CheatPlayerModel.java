@@ -40,4 +40,10 @@ public class CheatPlayerModel implements AbstractPlayerModel {
 
 	}
 
+	@Override
+	public boolean isPlayerVeryFrustrated(IFGameState game_state) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
