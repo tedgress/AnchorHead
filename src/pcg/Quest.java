@@ -29,6 +29,13 @@ public class Quest {
 
 	private LinkedList<PCG_TerminalSymbol> quest_expression = new LinkedList<PCG_TerminalSymbol>();
 
+	public void newQuest(){
+		this.questGiver = null;
+		this.game_state = null;
+		this.story_state = null;
+		this.questActive = false;
+		this.quest_expression = new LinkedList<PCG_TerminalSymbol>();
+	}
 	public IFStoryState getStory_state() {
 		return story_state;
 	}
