@@ -727,6 +727,23 @@ However, I only undertand basic commands like: go to, look, take, open, buy, giv
 				</animations>
 				<ai>library-guy.xml</ai>
 			</object>
+			
+			<object type="character" id="wizard_hat" x="350" y="190">
+				<description>A floppy hat. You can hear muttering from beneath it.</description>
+				<inventory>
+				</inventory>
+				<action>
+					<type>idle</type>
+				</action>
+				<animations>
+					<animation action="idle">
+						<frame time="100">wizard_hat</frame>
+					</animation>
+					
+				</animations>
+				<ai>bartender.xml</ai>
+			</object>
+			
 		</objects>
 	</room>
 

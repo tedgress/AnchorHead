@@ -350,5 +350,12 @@
 	  <y>0</y>
 	  <w>32</w>
 	  <h>32</h>
-	</tile>				
+	</tile>
+	<tile id = "wizard_hat">
+	  <img>graphics/wizard_hat.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>					
 </tileset>
