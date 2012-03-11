@@ -43,7 +43,7 @@ public class PlayerPatron {
 		 *  bar - Crazy Drunk
 		 *  magic-shop - Talking Grimoire
 		 *  library - Scholar
-		 *  observatory
+		 *  observatory - Wizard/Astronomer/Physicist?
 		 *  sewers - Rat King
 		 */
 		
