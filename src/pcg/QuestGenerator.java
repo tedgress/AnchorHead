@@ -17,6 +17,7 @@ import storyengine.IFStoryState;
 public class QuestGenerator implements AbstractStoryGenerator {
 
 	protected QuestTemplate quest = null;
+	protected int questNumber = 0;
 
 	public boolean generate(IFStoryState story_state, IFGameState game_state,
 			List<String> logOutput) {
@@ -24,13 +25,20 @@ public class QuestGenerator implements AbstractStoryGenerator {
 		long seed = game_state.getCycle();
 		PCG_Random.seed_rng(seed);
 
+		if (!Quest.getQuest().isQuestActive() && this.quest != null){
+			//create a new quest
+			Quest.getQuest().newQuest();
+			this.questNumber++;
+		}
+		else if (Quest.getQuest().isQuestActive())
+			return false;
+		
 		// setup the quest
 		Quest.getQuest().setGame_state(game_state);
-		Quest.getQuest().setQuestName("quest");
+		Quest.getQuest().setQuestName("quest_" + this.questNumber);
 		Quest.getQuest().setStory_state(story_state);
 
-		if (null != this.quest)
-			return false;
+		
 
 		// Randomly select a quest giver in the room
 		IFCharacter questGiver = this.selectCharacter(game_state);
