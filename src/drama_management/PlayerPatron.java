@@ -58,6 +58,17 @@ public class PlayerPatron {
 			
 		} else if (currentRoom.equals("backyard")) {
 			
+			IFAction myAction = new IFAction("ghost-twins", IFAction.TALK, "ghost-twins", IFAction.IDLE, ".........");
+			IFAction myAction2 = new IFAction("ghost-twins", IFAction.TALK, "ghost-twins", IFAction.IDLE, "We may help you....");
+			IFAction myAction3 = new IFAction("ghost-twins", IFAction.TALK,  "ghost-twins", IFAction.IDLE, hint.toString());
+			myAction.stationary = true;
+			myAction2.stationary = true;
+			myAction3.stationary = true;
+			game_state.enqueueAction(myAction, story_state);
+			game_state.enqueueAction(myAction2, story_state);
+			game_state.enqueueAction(myAction3, story_state);
+			
+			
 		} else if (currentRoom.equals("bedroom")) {
 			
 		} else if (currentRoom.equals("basement")) {

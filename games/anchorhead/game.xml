@@ -267,6 +267,25 @@ However, I only undertand basic commands like: go to, look, take, open, buy, giv
 					</object>
 				</objects>
 			</object>
+			
+					<object type="character" id="ghost-twins" x="100" y="100">
+				<description>Two phantoms hovering around the yard</description>
+				<inventory>
+				</inventory>
+				<action>
+					<type>idle</type>
+				</action>
+				<animations>
+					<animation action="idle">
+						<frame time="100">ghost-twins</frame>
+					</animation>
+					<animation action="talk">
+						<frame time="5">ghost-twins</frame>
+						<frame time="5">ghost-twins</frame>
+					</animation>
+				</animations>
+				<ai>bum.xml</ai>
+			</object>
 
 		</objects>
 	</room>
