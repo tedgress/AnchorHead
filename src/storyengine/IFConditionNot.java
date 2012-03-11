@@ -8,6 +8,18 @@ public class IFConditionNot extends IFCondition {
 
 	IFCondition m_condition = null;
 	
+	/**
+	 * Constructor for PCG
+	 * @param condition
+	 */
+	public IFConditionNot(IFCondition condition){
+		this.m_condition = condition;
+	}
+	
+	public IFConditionNot(){
+		//nothing special
+	}
+	
 	public boolean evaluate(IFGameState game,IFStoryState story) {		
 		return !m_condition.evaluate(game,story);
 	}

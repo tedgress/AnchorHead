@@ -7,6 +7,8 @@ import ifgameengine.IFTileManager;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.Properties;
@@ -61,8 +63,12 @@ public class GraphicalInterfaceJFrame extends JPanel {
     {
 
     	
-    		
-        String loggerName = "IF-log-" + new Date().getTime() + ".txt";
+    	DateFormat df = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+		java.util.Date date = new java.util.Date();
+			
+		String timestamp = df.format(date);
+			
+        String loggerName = "IF-log-" + timestamp + ".txt";
         m_logger = new PrintStream(new FileOutputStream(new File(loggerName)));
 
         String gameToLoad = "games/anchorhead";
@@ -70,8 +76,12 @@ public class GraphicalInterfaceJFrame extends JPanel {
         
         if (args.length > 0) {
     		if ( args[0].equals("-cheat"))
-    			game.cheat();
+    			game.cheat(false);
     	}
+        
+        if (args.length >= 2 && args[1].equals("-use_real_hints")){
+        	game.cheat(true);
+        }
 
         game.loadGame(gameToLoad);
         game.setPreferredSize(new Dimension(640, 512));
@@ -233,8 +243,9 @@ public class GraphicalInterfaceJFrame extends JPanel {
         m_story.computeUserImportantActions(m_game);
     }
     
-    public void cheat() {
-    	this.dm.cheat();
+    public void cheat(boolean realHints) {
+    	
+    	this.dm.cheat(realHints);
     }
 
     public void update() {

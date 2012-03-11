@@ -22,7 +22,25 @@ public class IFPlotPoint {
 	LinkedList<IFAction> m_effects = new LinkedList<IFAction>();
 	LinkedList<IFHint> m_hints = new LinkedList<IFHint>();
 	int m_endgame = -1;		// if this is different than -1, the game will end in 'm_endgame' cycles
+	
+	public IFPlotPoint(String name, String plot, IFCondition precondition, IFCondition trigger, LinkedList<IFAction> effects, LinkedList<IFHint> hints){
 		
+		if (name == null || plot == null || precondition == null || trigger == null){
+			throw new NullPointerException("Null parameters in plotpoint");
+		}
+		
+		this.m_name = name;
+		this.m_plot = plot;
+		this.m_precondition = precondition;
+		this.m_trigger = trigger;
+		
+		if (null != effects)
+			this.m_effects = effects;
+		
+		if (null != hints)
+			this.m_hints = hints;
+		
+	}
 	private IFPlotPoint() {
 		
 	}

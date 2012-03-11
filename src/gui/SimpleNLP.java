@@ -46,6 +46,7 @@ public class SimpleNLP {
         action_synonyms.put("speak","talk");
         action_synonyms.put("buy","buy");
         action_synonyms.put("give","give");
+        action_synonyms.put("show", "give");
     }
     
 

@@ -7,6 +7,14 @@ import org.jdom.Element;
 public class IFConditionPlotpoint extends IFCondition {
 	String m_plotpoint = null;
 	
+	public IFConditionPlotpoint(String plotpoint){
+		this.m_plotpoint = plotpoint;
+	}
+	
+	public IFConditionPlotpoint(){
+		//nothing special
+	}
+	
 	public boolean evaluate(IFGameState game,IFStoryState story) {
 		Integer status = story.m_storyState.get(m_plotpoint);
 		if (status!=null && status==IFPlotPoint.FINISHED) return true;		

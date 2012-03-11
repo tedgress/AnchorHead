@@ -44,4 +44,16 @@ public class CheatHinter implements AbstractHintMachine {
 
 	}
 
+	@Override
+	public int get_time_between_hints() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void set_time_between_hints(int mIN_TIME_BETWEEN_HINTS) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

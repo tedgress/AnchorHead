@@ -33,12 +33,22 @@ public class IFStory {
 			Element ppe = (Element) ppo;
 			IFPlotPoint pp = IFPlotPoint.loadFromXML(ppe,path);
 			
-			story.m_plot_points.put(pp.m_name,pp);
+			story.insertPlotpoint(pp);
+			//story.m_plot_points.put(pp.m_name,pp);
 		}
 		
 		if (story_root.getChild("intromessage")!=null) story.m_intromessage = story_root.getChild("intromessage").getValue();
 		
 		return story;
+	}
+	
+	/**
+	 * Used for initial plot point creation and for PCG
+	 * 
+	 * @param pp
+	 */
+	public void insertPlotpoint(IFPlotPoint pp){
+		this.m_plot_points.put(pp.m_name, pp);
 	}
 	
 	public void computeUserImportantActions(IFGameState gs) {

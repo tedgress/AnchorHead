@@ -201,7 +201,7 @@
 			</object>
 			<object type="item" id="leaflet" x="320" y="417" synonym="leaf">
 				<description>Welcome to Anchorhead! This is a game of mystery and adventure, no computer should be without one!
-However, this game only understands very basic commands like "take","look","go to" and some others.  Commands like "use water on fire" are as about as complex as I understand.  Hopefully, you won't need that one... </description>
+However, I only undertand basic commands like: go to, look, take, open, buy, give and show.  You may run into Anchorhead residents.  You can talk to them by saying "say hello to Bob" or "ask bob about anchorhead" and sometimes: "show bob gun"...  Be sure to "say hello" to each of our residents!  Somethings in anchorhead are locked, to unlock them say "unlock mystery with key."  Everything locked must be unlocked with something! </description>
 				<animation action="idle">
 					<frame time="100">leaflet</frame>
 				</animation>
@@ -363,7 +363,7 @@ However, this game only understands very basic commands like "take","look","go t
 				<objects>
 					<object type="item" id="safe-combo" x="128" y="32"
 						synonym="combo;comination">
-						<description>69-10-5. This looks like a combination to open
+						<description>This looks like a combination to open
 							some kind of secret vault.</description>
 						<animation action="idle">
 							<frame time="100">safe-combo</frame>
