@@ -29,7 +29,7 @@
 			<hint text="I heard they have special edition flasks at the bar." subtlety="3"/>
 		</hints>
 	</plotpoint>
-
+<!--
 	<plotpoint name="no-more-flasks">
 		<preconditions>
 			<condition type="and">
@@ -51,7 +51,7 @@
 					text="I'm sorry, I run out of those!!"/>
 		</effects>
 	</plotpoint>
-
+-->
 	<plotpoint name="find-magic-shop">
 		<trigger>
 			<condition type="location" character="player" location="magic-shop"/>
